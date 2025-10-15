@@ -1,0 +1,351 @@
+/**
+ * ESTILOS DE THE SACRED SPA
+ * 
+ * Este archivo contiene todos los estilos específicos para la página del spa del hotel,
+ * incluyendo secciones de título, menú de tratamientos, tarjetas de servicios y diseño general.
+ * Usa un diseño elegante y relajante acorde con la experiencia del spa.
+ */
+
+/* ==========================================
+   THE SACRED SPA - ESTILOS INDEPENDIENTES
+   ========================================== */
+
+/* Estilos base de la página del spa */
+.spa-page {
+    background-color: #ffffff;
+    color: #2c2c2c;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navegación usa estilos de main.css */
+
+/* Spa Title Section */
+.spa-title-section {
+    background: #f5f5f5;
+    padding: 4rem 0 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 80px; /* Account for fixed navbar */
+}
+
+.spa-title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="spa-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23d4af37" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23spa-pattern)"/></svg>');
+    opacity: 0.3;
+}
+
+.spa-title-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.spa-restaurant-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.02em;
+}
+
+/* Spa Main Content */
+.spa-main-content {
+    padding: 2rem 0;
+    background: #ffffff;
+    min-height: 70vh;
+}
+
+.spa-grid-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Spa Grid Left - Main Title */
+.spa-grid-left {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.spa-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    line-height: 1.1;
+    margin: 4rem 0 0 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Spa Grid Center - Main Description */
+.spa-grid-center {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.spa-description {
+    max-width: 100%;
+}
+
+.spa-description p {
+    font-size: 1.1rem;
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+    font-weight: 400;
+    text-align: left;
+}
+
+.spa-description p:last-child {
+    margin-bottom: 0;
+}
+
+/* Spa Grid Right - Saint Suites Description */
+.spa-grid-right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.saint-suites-description {
+    max-width: 100%;
+}
+
+.saint-suites-description p {
+    font-size: 1.1rem;
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin: 0;
+    font-weight: 400;
+    text-align: left;
+}
+
+
+/* Responsive Design for Spa */
+@media (max-width: 1200px) {
+    .spa-grid-container {
+        gap: 3rem;
+    }
+    
+    .spa-title {
+        font-size: 2.8rem;
+    }
+    
+    .spa-restaurant-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 968px) {
+    .spa-grid-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    
+    .spa-grid-left,
+    .spa-grid-center,
+    .spa-grid-right {
+        justify-content: center;
+    }
+    
+    .spa-title {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    .spa-description p,
+    .saint-suites-description p {
+        text-align: center;
+        font-size: 1rem;
+    }
+    
+    /* Estilos de navegación móvil en main.css */
+}
+
+@media (max-width: 768px) {
+    .spa-title-section {
+        padding: 3rem 0 2rem;
+    }
+    
+    .spa-main-content {
+        padding: 4rem 0;
+    }
+    
+    .spa-grid-container {
+        padding: 0 1.5rem;
+        gap: 2.5rem;
+    }
+    
+    .spa-title {
+        font-size: 2.2rem;
+    }
+    
+    .spa-restaurant-title {
+        font-size: 2.5rem;
+    }
+    
+    .spa-description p,
+    .saint-suites-description p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .spa-title-section .container {
+        padding: 0 1rem;
+    }
+    
+    .spa-grid-container {
+        padding: 0 1rem;
+        gap: 2rem;
+    }
+    
+    .spa-title {
+        font-size: 1.8rem;
+    }
+    
+    .spa-restaurant-title {
+        font-size: 2rem;
+    }
+    
+    .spa-description p,
+    .saint-suites-description p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+}
+
+/* Animation and Transitions */
+.spa-page * {
+    transition: all 0.3s ease;
+}
+
+.spa-title-section {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.spa-grid-left,
+.spa-grid-center,
+.spa-grid-right {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.spa-grid-center {
+    animation-delay: 0.2s;
+}
+
+.spa-grid-right {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effects - Removed */
+
+/* Focus States en main.css */
+
+/* ========================================
+   SPA IMAGES - LUXURY SPA GALLERY
+   ======================================== */
+
+/* Spa Images Container */
+.spa-images-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    margin: -10rem 0 4rem 0;
+    padding: 0 2rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    background: transparent;
+    align-items: center;
+}
+
+.spa-image-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.spa-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Center image specific styling */
+.spa-image-item:nth-child(2) {
+    justify-self: center;
+    max-width: 400px;
+    margin-top: 3rem;
+}
+
+.spa-image-item:nth-child(2) .spa-image {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Responsive Design for Spa Images */
+@media (max-width: 1200px) {
+    .spa-images-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: -10rem 0 3rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .spa-images-container {
+        padding: 0 1rem;
+        gap: 1.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .spa-title-section::before {
+        display: none;
+    }
+    
+    .spa-page {
+        background: white;
+        color: black;
+    }
+    
+    .spa-title,
+    .spa-restaurant-title {
+        color: black;
+    }
+    
+    .spa-images-container {
+        display: none;
+    }
+}

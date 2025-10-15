@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suites - Hotel el Rincón del Carmen</title>
+    
+    <!-- Scripts JavaScript necesarios para la funcionalidad de suites -->
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/localStorage.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/rooms.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/suites.js" defer></script>
+    
+    <!-- Hojas de estilo CSS para suites -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    
+    <!-- Fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación principal -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo del hotel -->
+            <div class="nav-logo">
+                <h2>Hotel el Rincón del Carmen<br><span class="santorini"></span></h2>
+            </div>
+            
+            <!-- Menú de navegación -->
+            <ul class="nav-menu">
+                <!-- Enlace a la página principal -->
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Hogar</a>
+                </li>
+                
+                <!-- Enlace activo a suites -->
+                <li class="nav-item">
+                    <a href="suites.html" class="nav-link active">Suites</a>
+                </li>
+                
+                <!-- Menú desplegable de experiencias -->
+                <li class="nav-item dropdown">
+                    <a href="../index.html#experience" class="nav-link">Experiencia</a>
+                    <div class="dropdown-menu">
+                        <a href="trinity-restaurant.html" class="dropdown-item">Trinity Restaurant</a>
+                        <a href="sky-bar.html" class="dropdown-item">Sky Bar</a>
+                        <a href="sacred-spa.html" class="dropdown-item">The Sacred Spa</a>
+                        <a href="saint-gym.html" class="dropdown-item">Saint Gym</a>
+                        <a href="saint-yachting.html" class="dropdown-item">Saint Yachting</a>
+                        <a href="vip-transfers.html" class="dropdown-item">VIP Transfers</a>
+                    </div>
+                </li>
+                
+                <!-- Enlace a contacto -->
+                <li class="nav-item">
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </li>
+                
+                <!-- Enlace a reservas -->
+                <li class="nav-item">
+                    <a href="reservas.html" class="nav-link">Reservar ahora</a>
+                </li>
+                
+                <!-- Saludo del usuario (se muestra solo cuando está logueado) -->
+                <li class="nav-item" id="userGreeting" style="display: none;">
+                    <span class="nav-link user-greeting"><span id="userName"></span></span>
+                </li>
+                
+                <!-- Botón de iniciar sesión (se muestra cuando no está logueado) -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="loginBtn">Iniciar Sesión</a>
+                </li>
+                
+                <!-- Botón de panel de administración (solo para administradores) -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="adminBtn" style="display: none;">Panel Admin</a>
+                </li>
+                
+                <!-- Botón de cerrar sesión (se muestra cuando está logueado) -->
+                <li class="nav-item" id="logoutBtnItem" style="display: none;">
+                    <a href="#" class="nav-link" id="logoutBtn">Cerrar Sesión</a>
+                </li>
+            </ul>
+            
+            <!-- Botón hamburguesa para menú móvil -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección hero de las suites -->
+    <section class="suites-hero">
+        <img src="https://www.saintsuitesoia.com/wp-content/uploads/2020/02/HighRes-24-600x500.jpg" alt="Suites Hero" class="hero-image">
+        <div class="suites-hero-content">
+            <h1>SUITES</h1>
+        </div>
+    </section>
+
+    <!-- Sección de detalles de suites -->
+    <section class="suite-details-section">
+        <div class="container">
+            <!-- Suite Icónica -->
+            <div class="suite-item">
+                <div class="suite-details-grid">
+                    <!-- Imagen de la suite -->
+                    <div class="suite-image">
+                        <img src="https://www.saintsuitesoia.com/wp-content/uploads/2020/02/HighRes-35-600x400.jpg" alt="Suite Icónica">
+                    </div>
+                    <!-- Contenido de la suite -->
+                    <div class="suite-content">
+                        <h2>Suite Icónica con Terraza Privada y Vista a la Caldera</h2>
+                        <p>Para los huéspedes que anhelan la icónica experiencia de Santorini, sin tener que comprometer el lujo y la comodidad.</p>
+                        <button class="btn-ver-aqui" onclick="viewSuite('iconica')">VER AQUÍ</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suite Mítica -->
+            <div class="suite-item reverse">
+                <div class="suite-details-grid">
+                    <!-- Imagen de la suite -->
+                    <div class="suite-image">
+                        <img src="https://www.saintsuitesoia.com/wp-content/uploads/2020/02/HighRes-40-600x500.jpg" alt="Suite Mítica">
+                    </div>
+                    <!-- Contenido de la suite -->
+                    <div class="suite-content">
+                        <h2>Suite Mítica con Terraza Privada y Vista de 180° a la Caldera</h2>
+                        <p>Para los huéspedes que buscan una versión moderna de la experiencia clásica de el hotel rincon, nuestras Mythic Suites cuentan con interiores modernos y espaciosos y vistas que pueden robarse cualquier espectáculo.</p>
+                        <button class="btn-ver-aqui" onclick="viewSuite('mitica')">VER AQUÍ</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suite Épica -->
+            <div class="suite-item">
+                <div class="suite-details-grid">
+                    <!-- Imagen de la suite -->
+                    <div class="suite-image">
+                        <img src="https://www.saintsuitesoia.com/wp-content/uploads/2020/02/Homepage-2-600x500.jpg" alt="Suite Épica">
+                    </div>
+                    <!-- Contenido de la suite -->
+                    <div class="suite-content">
+                        <h2>Suite Épica con Terraza Privada y Vista de 180° a la Caldera</h2>
+                        <p>Para los huéspedes que buscan un escape privado, nuestras Epic Suites actuarán como un refugio moderno y contemporáneo donde podrán recargar energías y reconectarse.</p>
+                        <button class="btn-ver-aqui" onclick="viewSuite('epica')">VER AQUÍ</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suite Deluxe -->
+            <div class="suite-item reverse">
+                <div class="suite-details-grid">
+                    <!-- Imagen de la suite -->
+                    <div class="suite-image">
+                        <img src="https://www.saintsuitesoia.com/wp-content/uploads/2020/02/HighRes-24-600x500.jpg" alt="Suite Deluxe">
+                    </div>
+                    <!-- Contenido de la suite -->
+                    <div class="suite-content">
+                        <h2>Suite Majestic con terraza privada y vista de 180° a la caldera</h2>
+                        <p>Para los huéspedes que buscan un escape privado, nuestra Majestic Suite actuará como su refugio contemporáneo moderno donde podrán recargar energías y reconectarse.</p>
+                        <button class="btn-ver-aqui" onclick="viewSuite('deluxe')">VER AQUÍ</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suite Premium -->
+            <div class="suite-item">
+                <div class="suite-details-grid">
+                    <!-- Imagen de la suite -->
+                    <div class="suite-image">
+                        <img src="https://www.saintsuitesoia.com/wp-content/uploads/2020/02/HighRes-26-600x500.jpg" alt="Suite Premium">
+                    </div>
+                    <!-- Contenido de la suite -->
+                    <div class="suite-content">
+                        <h2>Suite Element con terraza privada estilo cueva con vista de 180° a la caldera</h2>
+                        <p>La Suite Element es nuestra suite más exclusiva, inspirada en las formaciones rocosas orgánicas que dan fama a Santorini. Originalmente una de las famosas cuevas de Oia, esta villa está diseñada para huéspedes que buscan un refugio de ensueño.</p>
+                        <button class="btn-ver-aqui" onclick="viewSuite('premium')">VER AQUÍ</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suite Master -->
+            <div class="suite-item reverse">
+                <div class="suite-details-grid">
+                    <!-- Imagen de la suite -->
+                    <div class="suite-image">
+                        <img src="https://www.saintsuitesoia.com/wp-content/uploads/2019/12/HighRes-6-min-1-scaled-e1575923182587-600x500.jpg" alt="Suite Master">
+                    </div>
+                    <!-- Contenido de la suite -->
+                    <div class="suite-content">
+                        <h2>La Suite Santa con terraza privada y vista de 180° a la caldera</h2>
+                        <p>Para los huéspedes que anhelan la icónica experiencia de Santorini, sin tener que comprometer el lujo y la comodidad.</p>
+                        <button class="btn-ver-aqui" onclick="viewSuite('master')">VER AQUÍ</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suite Royal -->
+            <div class="suite-item">
+                <div class="suite-details-grid">
+                    <!-- Imagen de la suite -->
+                    <div class="suite-image">
+                        <img src="https://www.saintsuitesoia.com/wp-content/uploads/2022/06/The-One-Private-Villa-Exterior-Pool-scaled-600x500.jpg" alt="Suite Royal">
+                    </div>
+                    <!-- Contenido de la suite -->
+                    <div class="suite-content">
+                        <h2>Villa One Saint con terraza privada y vistas a la caldera</h2>
+                        <p>La villa 'ONE' de SAINT es nuestra villa más exclusiva y ofrece impresionantes vistas de la Caldera de Santorini desde dos de sus áreas de estar al aire libre.</p>
+                        <button class="btn-ver-aqui" onclick="viewSuite('royal')">VER AQUÍ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página del sitio web -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Sección 1: Información del hotel -->
+                <div class="footer-section">
+                    <h3>Hotel el Rincón del Carmen</h3>
+                    <p>Tu hogar lejos de casa</p>
+                </div>
+                
+                <!-- Sección 2: Enlaces de navegación rápida -->
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="reservas.html">Reservas</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Sección 3: Información de contacto -->
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +57 3137713137</p>
+                    <p><i class="fas fa-envelope"></i> reservations@saintsuitesoia.com</p>
+                </div>
+            </div>
+            
+            <!-- Sección inferior del footer con derechos de autor -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hotel el Rincón del Carmen. Todos los derechos reservados.</p>
+                <p>Desarrollado por <a href="https://github.com/valemancilla" target="_blank" style="color: #b89a7e; text-decoration: none;">Vale Mancilla</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Ventanas modales para autenticación -->
+    
+    <!-- Modal de inicio de sesión -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            
+            <!-- Formulario de login -->
+            <form id="loginForm">
+                <!-- Campo de email -->
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                
+                <!-- Campo de contraseña con botón para mostrar/ocultar -->
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="loginPassword" required>
+                        <!-- Icono para alternar visibilidad de la contraseña -->
+                        <svg class="toggle-password" data-target="loginPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn-primary">Iniciar Sesión</button>
+            </form>
+            
+            <!-- Enlaces de navegación -->
+            <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+        </div>
+    </div>
+
+    <!-- Modal de registro de nuevos usuarios -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Registro de Usuario</h2>
+            
+            <!-- Formulario de registro -->
+            <form id="registerForm">
+                <!-- Campo de número de identificación -->
+                <div class="form-group">
+                    <label for="regId">Número de Identificación:</label>
+                    <input type="text" id="regId" required>
+                </div>
+                
+                <!-- Campo de nombre completo -->
+                <div class="form-group">
+                    <label for="regName">Nombre Completo:</label>
+                    <input type="text" id="regName" required>
+                </div>
+                
+                <!-- Campo de nacionalidad -->
+                <div class="form-group">
+                    <label for="regNationality">Nacionalidad:</label>
+                    <input type="text" id="regNationality" required>
+                </div>
+                
+                <!-- Campo de email -->
+                <div class="form-group">
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                
+                <!-- Campo de teléfono -->
+                <div class="form-group">
+                    <label for="regPhone">Teléfono:</label>
+                    <input type="tel" id="regPhone" required>
+                </div>
+                
+                <!-- Campo de contraseña con botón para mostrar/ocultar -->
+                <div class="form-group">
+                    <label for="regPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="regPassword" required>
+                        <!-- Icono para alternar visibilidad de la contraseña -->
+                        <svg class="toggle-password" data-target="regPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn-primary">Registrarse</button>
+            </form>
+            
+            <!-- Enlace para volver al login -->
+            <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+</body>
+</html>

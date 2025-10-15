@@ -1,0 +1,294 @@
+/**
+ * ESTILOS DE LA PÁGINA DE CONTACTO
+ * 
+ * Este archivo contiene todos los estilos específicos para la página de contacto,
+ * incluyendo el formulario, información de contacto, tarjetas y diseño responsive.
+ */
+
+/* ==========================================
+   SECCIÓN PRINCIPAL DE CONTACTO
+   ========================================== */
+
+/* Contenedor principal de la página de contacto */
+.contact-main-section {
+    padding: 120px 0 60px 0;
+    background-color: #ffffff;
+    min-height: 80vh;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Left Side - Contact Form */
+.contact-form-side {
+    padding-right: 40px;
+}
+
+.form-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.form-header p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    color: #2c2c2c;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.error-message {
+    background-color: #b89a7e !important;
+    color: white !important;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.submit-btn {
+    background-color: #8b4513;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #a0522d;
+    transform: translateY(-2px);
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px 20px;
+    border-radius: 4px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    border: 1px solid #c3e6cb;
+    animation: slideIn 0.3s ease-out;
+}
+
+.success-message i {
+    color: #28a745;
+    font-size: 1.1rem;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Right Side - Map and Contact Info */
+.contact-info-side {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 300px;
+}
+
+.contact-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.contact-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detail-label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #2c2c2c;
+    font-weight: 400;
+}
+
+.whatsapp-contact {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #25d366;
+}
+
+.whatsapp-availability {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.whatsapp-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    color: #2c2c2c;
+}
+
+.whatsapp-info i {
+    color: #25d366;
+    font-size: 1.2rem;
+}
+
+.whatsapp-number {
+    font-weight: 600;
+    color: #25d366;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 15px;
+    }
+    
+    .contact-form-side {
+        padding-right: 0;
+    }
+    
+    .form-header h1 {
+        font-size: 2rem;
+    }
+    
+    .contact-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .whatsapp-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-main-section {
+        padding: 100px 0 40px 0;
+    }
+    
+    .form-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .form-header p {
+        font-size: 0.9rem;
+    }
+    
+    .contact-form {
+        gap: 20px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .submit-btn {
+        padding: 12px 25px;
+        font-size: 0.8rem;
+    }
+}

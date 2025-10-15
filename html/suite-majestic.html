@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suite Majestic - Hotel el Rincón del Carmen</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Hotel el Rincón del Carmen<br><span class="santorini"></span></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Hogar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="suites.html" class="nav-link active">Suites</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="../index.html#experience" class="nav-link">Experiencia</a>
+                    <div class="dropdown-menu">
+                        <a href="trinity-restaurant.html" class="dropdown-item">Trinity Restaurant</a>
+                        <a href="sky-bar.html" class="dropdown-item">Sky Bar</a>
+                        <a href="sacred-spa.html" class="dropdown-item">The Sacred Spa</a>
+                        <a href="saint-gym.html" class="dropdown-item">Saint Gym</a>
+                        <a href="saint-yachting.html" class="dropdown-item">Saint Yachting</a>
+                        <a href="vip-transfers.html" class="dropdown-item">VIP Transfers</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a href="reservas.html" class="nav-link">Reservar ahora</a>
+                </li>
+                <li class="nav-item" id="userGreeting" style="display: none;">
+                    <span class="nav-link user-greeting"><span id="userName"></span></span>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="loginBtn">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="adminBtn" style="display: none;">Panel Admin</a>
+                </li>
+                <li class="nav-item" id="logoutBtnItem" style="display: none;">
+                    <a href="#" class="nav-link" id="logoutBtn">Cerrar Sesión</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Suite Detail Hero -->
+    <section class="suite-detail-hero">
+        <div class="suite-detail-image">
+            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2020/02/HighRes-24-600x500.jpg" alt="Suite Majestic">
+        </div>
+    </section>
+
+    <!-- Suite Title -->
+    <section class="suite-title-section" style="background-color: #f1f3f4;">
+        <div class="container">
+            <h1>Suite Majestic con Terraza Privada y Vista de 180° a la Caldera</h1>
+        </div>
+    </section>
+
+    <!-- Image Carousel and Booking Widget -->
+    <section class="carousel-booking-section">
+        <div class="container">
+            <div class="carousel-booking-grid">
+                <!-- Image Carousel -->
+                <div class="carousel-container">
+                    <div class="main-carousel">
+                        <div class="carousel-slide active">
+                            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2020/02/HighRes-24-600x500.jpg" alt="Suite Majestic - Vista Principal">
+                            <button class="fullscreen-btn">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2024/03/DSC_9551-scaled.jpg" alt="Suite Majestic - Terraza">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2024/03/DSC_9536-scaled.jpg" alt="Suite Majestic - Interior">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/image/habitacion 3.4.jpg" alt="Suite Majestic - Vista Nocturna">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2024/03/L1178729.webp" alt="Suite Majestic - Piscina">
+                        </div>
+                    </div>
+                    
+                    <!-- Thumbnails -->
+                    <div class="carousel-thumbnails">
+                        <div class="thumbnail active">
+                            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2020/02/HighRes-24-600x500.jpg" alt="Vista Principal">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2024/03/DSC_9551-scaled.jpg" alt="Terraza">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2024/03/DSC_9536-scaled.jpg" alt="Interior">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="/image/habitacion 3.4.jpg" alt="Vista Nocturna">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2024/03/L1178729.webp" alt="Piscina">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suite Description -->
+    <section class="suite-description">
+        <div class="container">
+            <h2 class="description-title">Description</h2>
+            
+            <!-- Key Metrics -->
+            <div class="suite-metrics">
+                <div class="metric-item">
+                    <div class="metric-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="metric-text">2 GUESTS</span>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <span class="metric-text">100 m²</span>
+                </div>
+            </div>
+
+            <!-- Description Text -->
+            <div class="description-text">
+                <p>Para los huéspedes que buscan un escape privado, nuestra Majestic Suite actuará como su refugio contemporáneo moderno donde podrán recargar energías y reconectarse. Esta suite de lujo combina la elegancia clásica con el confort moderno, ofreciendo un espacio amplio y sofisticado diseñado para la máxima relajación y disfrute.</p>
+                <p>Con su terraza privada y vistas panorámicas de 180° a la Caldera, esta suite majestuosa ofrece el escenario perfecto para una experiencia inolvidable en Santorini. El diseño refinado y los acabados de alta calidad crean una atmósfera de lujo y exclusividad, perfecta para parejas que buscan una experiencia verdaderamente especial en el corazón de la isla.</p>
+            </div>
+
+            <!-- Room Services -->
+            <div class="room-services">
+                <h3 class="services-title">Room Services</h3>
+                <div class="services-grid">
+                    <!-- Column 1 -->
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <span class="service-text">Separate living area</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <span class="service-text">High speed Wi-Fi</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <span class="service-text">Flat Screen Smart TV – Netflix Accessible, Satellite Channels, Movie Library</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <span class="service-text">1 bedroom suite</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-shower"></i>
+                        </div>
+                        <span class="service-text">Free standing glass shower & walk in shower</span>
+                    </div>
+                    
+                    <!-- Column 2 -->
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <span class="service-text">Outdoor lounge area with sunbeds</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <span class="service-text">180° Caldera & Volcano View</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <span class="service-text">USB bed-side plugs</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <span class="service-text">Wardrobe/Closet</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-toilet"></i>
+                        </div>
+                        <span class="service-text">1 bathroom</span>
+                    </div>
+                    
+                    <!-- Column 3 -->
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <span class="service-text">24-hour Room Service</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <span class="service-text">Laptop safe</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-snowflake"></i>
+                        </div>
+                        <span class="service-text">Central Air conditioning & Heating</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-fan"></i>
+                        </div>
+                        <span class="service-text">Hairdryer, Bathrobe & Slippers, Molton Brown toiletries</span>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        <span class="service-text">Daily turndown service</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Rooms Section -->
+    <section class="similar-rooms">
+        <div class="container">
+            <h2 class="similar-rooms-title">Habitaciones similares</h2>
+            <div class="similar-rooms-grid">
+                <!-- Suite Icónica -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.saintsuitesoia.com/wp-content/uploads/2020/02/HighRes-40-600x500.jpg" alt="Suite Icónica">
+                    </div>
+                    <div class="room-info">
+                        <h3 class="room-name">Suite Icónica</h3>
+                        <div class="room-details">
+                            <div class="room-detail">
+                                <i class="fas fa-user"></i>
+                                <span>2 GUESTS</span>
+                            </div>
+                            <div class="room-detail">
+                                <i class="fas fa-th-large"></i>
+                                <span>60 m²</span>
+                            </div>
+                        </div>
+                        <button class="room-btn" onclick="window.location.href='suite-detail.html'">VER MÁS</button>
+                    </div>
+                </div>
+
+                <!-- Suite Mítica -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="/image/habitacion 1 imagen grande.jpg" alt="Suite Mítica">
+                    </div>
+                    <div class="room-info">
+                        <h3 class="room-name">Suite Mítica</h3>
+                        <div class="room-details">
+                            <div class="room-detail">
+                                <i class="fas fa-user"></i>
+                                <span>4 GUESTS</span>
+                            </div>
+                            <div class="room-detail">
+                                <i class="fas fa-th-large"></i>
+                                <span>80 m²</span>
+                            </div>
+                        </div>
+                        <button class="room-btn" onclick="window.location.href='suite-mitica.html'">VER MÁS</button>
+                    </div>
+                </div>
+
+                <!-- Suite de elementos -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.saintsuitesoia.com/wp-content/uploads/2022/06/The-One-Private-Villa-Exterior-Night-with-Pool-scaled.jpg" alt="Suite de elementos">
+                    </div>
+                    <div class="room-info">
+                        <h3 class="room-name">Suite de elementos</h3>
+                        <div class="room-details">
+                            <div class="room-detail">
+                                <i class="fas fa-user"></i>
+                                <span>2 GUESTS</span>
+                            </div>
+                            <div class="room-detail">
+                                <i class="fas fa-th-large"></i>
+                                <span>200 m²</span>
+                            </div>
+                        </div>
+                        <button class="room-btn" onclick="window.location.href='suite-elementos.html'">VER MÁS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hotel el Rincón del Carmen</h3>
+                    <p>Tu hogar lejos de casa</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="reservas.html">Reservas</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +57 3137713137</p>
+                    <p><i class="fas fa-envelope"></i> reservations@saintsuitesoia.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hotel el Rincón del Carmen. Todos los derechos reservados.</p>
+                <p>Desarrollado por <a href="https://github.com/valemancilla" target="_blank" style="color: #b89a7e; text-decoration: none;">Vale Mancilla</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="loginPassword" required>
+                        <svg class="toggle-password" data-target="loginPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Iniciar Sesión</button>
+            </form>
+            <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Registro de Usuario</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regId">Número de Identificación:</label>
+                    <input type="text" id="regId" required>
+                </div>
+                <div class="form-group">
+                    <label for="regName">Nombre Completo:</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form-group">
+                    <label for="regNationality">Nacionalidad:</label>
+                    <input type="text" id="regNationality" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">Teléfono:</label>
+                    <input type="tel" id="regPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="regPassword" required>
+                        <svg class="toggle-password" data-target="regPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Registrarse</button>
+            </form>
+            <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+
+    <script src="../js/localStorage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/suite-detail.js"></script>
+</body>
+</html>

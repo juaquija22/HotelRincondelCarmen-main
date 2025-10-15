@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Bar - Hotel el Rincón del Carmen</title>
+    
+    <!-- Scripts JavaScript necesarios para la funcionalidad del Sky Bar -->
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/localStorage.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    
+    <!-- Hojas de estilo CSS para el Sky Bar -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/sky-bar.css">
+    
+    <!-- Fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="sky-bar-page">
+    <!-- Barra de navegación principal -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo del hotel -->
+            <div class="nav-logo">
+                <h2>Hotel el Rincón del Carmen<br><span class="santorini"></span></h2>
+            </div>
+            
+            <!-- Menú de navegación -->
+            <ul class="nav-menu">
+                <!-- Enlace a la página principal -->
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Hogar</a>
+                </li>
+                
+                <!-- Enlace a las suites -->
+                <li class="nav-item">
+                    <a href="suites.html" class="nav-link">Suites</a>
+                </li>
+                
+                <!-- Menú desplegable de experiencias -->
+                <li class="nav-item dropdown">
+                    <a href="../index.html#experience" class="nav-link active">Experiencia</a>
+                    <div class="dropdown-menu">
+                        <a href="trinity-restaurant.html" class="dropdown-item">Trinity Restaurant</a>
+                        <a href="sky-bar.html" class="dropdown-item active">Sky Bar</a>
+                        <a href="sacred-spa.html" class="dropdown-item">The Sacred Spa</a>
+                        <a href="saint-gym.html" class="dropdown-item">Saint Gym</a>
+                        <a href="saint-yachting.html" class="dropdown-item">Saint Yachting</a>
+                        <a href="vip-transfers.html" class="dropdown-item">VIP Transfers</a>
+                    </div>
+                </li>
+                
+                <!-- Enlace a contacto -->
+                <li class="nav-item">
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </li>
+                
+                <!-- Enlace a reservas -->
+                <li class="nav-item">
+                    <a href="reservas.html" class="nav-link">Reservar ahora</a>
+                </li>
+                
+                <!-- Saludo del usuario (se muestra solo cuando está logueado) -->
+                <li class="nav-item" id="userGreeting" style="display: none;">
+                    <span class="nav-link user-greeting"><span id="userName"></span></span>
+                </li>
+                
+                <!-- Botón de iniciar sesión (se muestra cuando no está logueado) -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="loginBtn">Iniciar Sesión</a>
+                </li>
+                
+                <!-- Botón de panel de administración (solo para administradores) -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="adminBtn" style="display: none;">Panel Admin</a>
+                </li>
+                
+                <!-- Botón de cerrar sesión (se muestra cuando está logueado) -->
+                <li class="nav-item" id="logoutBtnItem" style="display: none;">
+                    <a href="#" class="nav-link" id="logoutBtn">Cerrar Sesión</a>
+                </li>
+            </ul>
+            
+            <!-- Botón hamburguesa para menú móvil -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección del título del Sky Bar -->
+    <section class="sky-bar-title-section" style="background-color: #f1f3f4;">
+        <div class="container">
+            <h1 class="sky-bar-title">Sky Bar</h1>
+        </div>
+    </section>
+
+    <!-- Contenido principal del Sky Bar -->
+    <main class="sky-bar-main-content">
+        <!-- Columna izquierda: Título principal -->
+        <div class="sky-bar-left">
+            <h2 class="sky-bar-headline">El paraíso del horizonte de <br> Santorini <br>  Por encima de las olas, <br> Más allá de lo ordinario</h2>
+        </div>
+        
+        <!-- Columna derecha: Descripción del Sky Bar -->
+        <div class="sky-bar-right">
+            <div class="sky-bar-description">
+                <div class="description-columns">
+                    <!-- Columna izquierda de descripción -->
+                    <div class="description-left">
+                        <p>Ubicado en la planta superior del Saint Suites Oia, el Sky Bar ofrece una vista panorámica de la caldera, el majestuoso volcán y el infinito mar Egeo . Diseñado con elegancia y sofisticación, el bar cuenta con elegantes mesas de mármol, muebles contemporáneos y una estética minimalista que se integra a la perfección con la icónica arquitectura blanca de Santorini.</p>
+                    </div>
+                    
+                    <!-- Columna derecha de descripción -->
+                    <div class="description-right">
+                        <p>A medida que el sol se esconde en el horizonte, el cielo se transforma en una impresionante paleta de colores, creando el escenario perfecto para una velada inolvidable . Deléitese con bebidas premium, cócteles de autor elaborados por expertos y un exquisito sushi, todo ello en un ambiente refinado y sereno. Tanto si busca una escapada romántica como una salida nocturna con estilo, Sky Bar es el destino ideal para el lujo y la satisfacción en Santorini.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sección de imágenes del Sky Bar -->
+    <section class="bar-images-container">
+        <!-- Imagen 1: Área de comedor -->
+        <div class="bar-image-item">
+            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2025/02/Sky-bar-Saintsantorini_-100A7670-1024x683.jpg" alt="Área de Comedor del Sky Bar" class="bar-image">
+        </div>
+        
+        <!-- Imagen 2: Área de lounge -->
+        <div class="bar-image-item">
+            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2025/02/SAINT-LUXURY-SUITES-SKYBAR-_4857-2-1024x575.jpg" alt="Área de Lounge del Sky Bar" class="bar-image">
+        </div>
+        
+        <!-- Imagen 3: Bar principal -->
+        <div class="bar-image-item">
+            <img src="https://www.saintsuitesoia.com/wp-content/uploads/2025/02/Sky-bar-Saintsantorini_-100A7672-1024x683.jpg" alt="Bar Principal del Sky Bar" class="bar-image">
+        </div>
+    </section>
+
+    <!-- Ventanas modales para autenticación -->
+    
+    <!-- Modal de inicio de sesión -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            
+            <!-- Formulario de login -->
+            <form id="loginForm">
+                <!-- Campo de email -->
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                
+                <!-- Campo de contraseña con botón para mostrar/ocultar -->
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="loginPassword" required>
+                        <!-- Icono para alternar visibilidad de la contraseña -->
+                        <svg class="toggle-password" data-target="loginPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn-primary">Iniciar Sesión</button>
+            </form>
+            
+            <!-- Enlaces de navegación -->
+            <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+        </div>
+    </div>
+
+    <!-- Modal de registro de nuevos usuarios -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Registro de Usuario</h2>
+            
+            <!-- Formulario de registro -->
+            <form id="registerForm">
+                <!-- Campo de número de identificación -->
+                <div class="form-group">
+                    <label for="regId">Número de Identificación:</label>
+                    <input type="text" id="regId" required>
+                </div>
+                
+                <!-- Campo de nombre completo -->
+                <div class="form-group">
+                    <label for="regName">Nombre Completo:</label>
+                    <input type="text" id="regName" required>
+                </div>
+                
+                <!-- Campo de nacionalidad -->
+                <div class="form-group">
+                    <label for="regNationality">Nacionalidad:</label>
+                    <input type="text" id="regNationality" required>
+                </div>
+                
+                <!-- Campo de email -->
+                <div class="form-group">
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                
+                <!-- Campo de teléfono -->
+                <div class="form-group">
+                    <label for="regPhone">Teléfono:</label>
+                    <input type="tel" id="regPhone" required>
+                </div>
+                
+                <!-- Campo de contraseña con botón para mostrar/ocultar -->
+                <div class="form-group">
+                    <label for="regPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="regPassword" required>
+                        <!-- Icono para alternar visibilidad de la contraseña -->
+                        <svg class="toggle-password" data-target="regPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn-primary">Registrarse</button>
+            </form>
+            
+            <!-- Enlace para volver al login -->
+            <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+
+    <!-- Pie de página del sitio web -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Sección 1: Información del hotel -->
+                <div class="footer-section">
+                    <h3>Hotel el Rincón del Carmen</h3>
+                    <p>Tu hogar lejos de casa</p>
+                </div>
+                
+                <!-- Sección 2: Enlaces de navegación rápida -->
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="reservas.html">Reservas</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Sección 3: Información de contacto -->
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +57 3137713137</p>
+                    <p><i class="fas fa-envelope"></i> reservations@saintsuitesoia.com</p>
+                </div>
+            </div>
+            
+            <!-- Sección inferior del footer con derechos de autor -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hotel el Rincón del Carmen. Todos los derechos reservados.</p>
+                <p>Desarrollado por <a href="https://github.com/valemancilla" target="_blank" style="color: #b89a7e; text-decoration: none;">Vale Mancilla</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - Hotel el Rincón del Carmen</title>
+    
+    <!-- Scripts JavaScript necesarios para la funcionalidad de reservas -->
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/localStorage.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/rooms.js" defer></script>
+    <script src="../js/reservations.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    
+    <!-- Hojas de estilo CSS para reservas -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/reservas.css">
+    <link rel="stylesheet" href="../css/mis-reservas.css">
+    <link rel="stylesheet" href="../css/habitaciones-disponibles.css">
+    
+    <!-- Fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación principal -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo del hotel -->
+            <div class="nav-logo">
+                <h2>Hotel el Rincón del Carmen<br><span class="santorini"></span></h2>
+            </div>
+            
+            <!-- Menú de navegación -->
+            <ul class="nav-menu">
+                <!-- Enlace a la página principal -->
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Hogar</a>
+                </li>
+                
+                <!-- Enlace a las suites -->
+                <li class="nav-item">
+                    <a href="suites.html" class="nav-link">Suites</a>
+                </li>
+                
+                <!-- Menú desplegable de experiencias -->
+                <li class="nav-item dropdown">
+                    <a href="../index.html#experience" class="nav-link">Experiencia</a>
+                    <div class="dropdown-menu">
+                        <a href="trinity-restaurant.html" class="dropdown-item">Trinity Restaurant</a>
+                        <a href="sky-bar.html" class="dropdown-item">Sky Bar</a>
+                        <a href="sacred-spa.html" class="dropdown-item">The Sacred Spa</a>
+                        <a href="saint-gym.html" class="dropdown-item">Saint Gym</a>
+                        <a href="saint-yachting.html" class="dropdown-item">Saint Yachting</a>
+                        <a href="vip-transfers.html" class="dropdown-item">VIP Transfers</a>
+                    </div>
+                </li>
+                
+                <!-- Enlace a contacto -->
+                <li class="nav-item">
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </li>
+                
+                <!-- Enlace activo a reservas -->
+                <li class="nav-item">
+                    <a href="reservas.html" class="nav-link active">Reservar ahora</a>
+                </li>
+                
+                <!-- Enlace a quejas y reclamos -->
+                <li class="nav-item">
+                    <a href="quejas.html" class="nav-link">Quejas y Reclamos</a>
+                </li>
+                <!-- Saludo del usuario (se muestra solo cuando está logueado) -->
+                <li class="nav-item" id="userGreeting" style="display: none;">
+                    <span class="nav-link user-greeting"><span id="userName"></span></span>
+                </li>
+                
+                <!-- Botón de iniciar sesión (se muestra cuando no está logueado) -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="loginBtn">Iniciar Sesión</a>
+                </li>
+                
+                <!-- Botón de panel de administración (solo para administradores) -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="adminBtn" style="display: none;">Panel Admin</a>
+                </li>
+                
+                <!-- Botón de cerrar sesión (se muestra cuando está logueado) -->
+                <li class="nav-item" id="logoutBtnItem" style="display: none;">
+                    <a href="#" class="nav-link" id="logoutBtn">Cerrar Sesión</a>
+                </li>
+            </ul>
+            
+            <!-- Botón hamburguesa para menú móvil -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de búsqueda de disponibilidad -->
+    <section class="search-section">
+        <div class="search-background">
+            <div class="search-overlay">
+                <div class="availability-search">
+                    <!-- Encabezado de la búsqueda -->
+                    <div class="search-header">
+                        <h1>Búsqueda de Disponibilidad</h1>
+                        <div class="search-options">
+                            <a href="#" class="travel-agents">Agentes de Viaje</a>
+                            <div class="flexible-dates">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>¿Fechas flexibles?</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulario moderno de búsqueda de disponibilidad -->
+                    <div class="search-form-modern">
+                        <div class="form-row-modern">
+                            <!-- Campo de fecha de check-in -->
+                            <div class="form-group-modern">
+                                <label for="checkIn">Check-in</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <input type="date" id="checkIn" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Campo de fecha de check-out -->
+                            <div class="form-group-modern">
+                                <label for="checkOut">Check-out</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <input type="date" id="checkOut" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Campo de número de huéspedes -->
+                            <div class="form-group-modern">
+                                <label for="guests">Número de Huéspedes</label>
+                                <select id="guests" required>
+                                    <option value="1">1 huésped</option>
+                                    <option value="2" selected>2 huéspedes</option>
+                                    <option value="3">3 huéspedes</option>
+                                    <option value="4">4 huéspedes</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Botón para iniciar la búsqueda -->
+                        <button type="button" id="searchBtn" class="search-button">
+                            <i class="fas fa-search"></i>
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de resultados de habitaciones disponibles -->
+    <section class="results-section" id="resultsSection" style="display: none;">
+        <div class="container">
+            <h2>Habitaciones Disponibles</h2>
+            <div class="rooms-grid" id="availableRooms">
+                <!-- Las habitaciones disponibles se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de mis reservas del usuario -->
+    <section class="my-reservations" id="myReservations" style="display: none;">
+        <div class="container">
+            <h2>Mis Reservas</h2>
+            <div class="reservations-list" id="reservationsList">
+                <!-- Las reservas del usuario se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de detalles de habitación -->
+    <div id="roomDetailsModal" class="modal">
+        <div class="modal-content large">
+            <span class="close">&times;</span>
+            <div class="room-details" id="roomDetailsContent">
+                <!-- Los detalles de la habitación se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación de reserva -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirmar Reserva</h2>
+            <div class="reservation-summary" id="reservationSummary">
+                <!-- El resumen de la reserva se cargará aquí dinámicamente -->
+            </div>
+            <form id="reservationForm">
+                <!-- Campo para notas especiales de la reserva -->
+                <div class="form-group">
+                    <label for="reservationNotes">Notas especiales (opcional):</label>
+                    <textarea id="reservationNotes" rows="3"></textarea>
+                </div>
+                <!-- Botón para confirmar la reserva -->
+                <button type="submit" class="btn-primary">Confirmar Reserva</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ventanas modales para autenticación -->
+    
+    <!-- Modal de inicio de sesión -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            
+            <!-- Formulario de login -->
+            <form id="loginForm">
+                <!-- Campo de email -->
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                
+                <!-- Campo de contraseña con botón para mostrar/ocultar -->
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="loginPassword" required>
+                        <!-- Icono para alternar visibilidad de la contraseña -->
+                        <svg class="toggle-password" data-target="loginPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn-primary">Iniciar Sesión</button>
+            </form>
+            
+            <!-- Enlaces de navegación -->
+            <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+            <p><a href="#" id="showChangePassword" style="color: #b89a7e; font-size: 14px;">¿Olvidaste tu contraseña?</a></p>
+        </div>
+    </div>
+
+    <!-- Modal de registro de nuevos usuarios -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Registro de Usuario</h2>
+            
+            <!-- Formulario de registro -->
+            <form id="registerForm">
+                <!-- Campo de número de identificación -->
+                <div class="form-group">
+                    <label for="regId">Número de Identificación:</label>
+                    <input type="text" id="regId" required>
+                </div>
+                
+                <!-- Campo de nombre completo -->
+                <div class="form-group">
+                    <label for="regName">Nombre Completo:</label>
+                    <input type="text" id="regName" required>
+                </div>
+                
+                <!-- Campo de nacionalidad -->
+                <div class="form-group">
+                    <label for="regNationality">Nacionalidad:</label>
+                    <input type="text" id="regNationality" required>
+                </div>
+                
+                <!-- Campo de email -->
+                <div class="form-group">
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <!-- Campo de teléfono -->
+                <div class="form-group">
+                    <label for="regPhone">Teléfono:</label>
+                    <input type="tel" id="regPhone" required>
+                </div>
+                
+                <!-- Campo de contraseña con botón para mostrar/ocultar -->
+                <div class="form-group">
+                    <label for="regPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="regPassword" required>
+                        <!-- Icono para alternar visibilidad de la contraseña -->
+                        <svg class="toggle-password" data-target="regPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn-primary">Registrarse</button>
+            </form>
+            
+            <!-- Enlace para volver al login -->
+            <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+
+    <!-- Modal de cambio de contraseña -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Cambiar Contraseña</h2>
+            
+            <!-- Formulario de cambio de contraseña -->
+            <form id="changePasswordForm">
+                <!-- Campo de email -->
+                <div class="form-group">
+                    <label for="changeEmail">Email:</label>
+                    <input type="email" id="changeEmail" required>
+                </div>
+                
+                <!-- Campo de contraseña actual -->
+                <div class="form-group">
+                    <label for="currentPassword">Contraseña Actual:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="currentPassword" required>
+                        <!-- Icono para alternar visibilidad de la contraseña -->
+                        <svg class="toggle-password" data-target="currentPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Campo de nueva contraseña -->
+                <div class="form-group">
+                    <label for="newPassword">Nueva Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="newPassword" required minlength="6">
+                        <!-- Icono para alternar visibilidad de la nueva contraseña -->
+                        <svg class="toggle-password" data-target="newPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Campo de confirmación de nueva contraseña -->
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Nueva Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="confirmPassword" required minlength="6">
+                        <!-- Icono para alternar visibilidad de la confirmación de contraseña -->
+                        <svg class="toggle-password" data-target="confirmPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn-primary">Cambiar Contraseña</button>
+            </form>
+            
+            <!-- Enlace para volver al login -->
+            <p><a href="#" id="backToLogin" style="color: #b89a7e; font-size: 14px;">← Volver al inicio de sesión</a></p>
+        </div>
+    </div>
+
+    <!-- Pie de página del sitio web -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Sección 1: Información del hotel -->
+                <div class="footer-section">
+                    <h3>Hotel el Rincón del Carmen</h3>
+                    <p>Tu hogar lejos de casa</p>
+                </div>
+                
+                <!-- Sección 2: Enlaces de navegación rápida -->
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="reservas.html">Reservas</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Sección 3: Información de contacto -->
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +57 3137713137</p>
+                    <p><i class="fas fa-envelope"></i> reservations@saintsuitesoia.com</p>
+                </div>
+            </div>
+            
+            <!-- Sección inferior del footer con derechos de autor -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hotel el Rincón del Carmen. Todos los derechos reservados.</p>
+                <p>Desarrollado por <a href="https://github.com/valemancilla" target="_blank" style="color: #b89a7e; text-decoration: none;">Vale Mancilla</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

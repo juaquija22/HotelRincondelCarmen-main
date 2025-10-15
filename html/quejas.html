@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quejas y Reclamos - Hotel el Rincón del Carmen</title>
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/localStorage.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/complaints.js" defer></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .complaints-container { max-width: 1100px; margin: 40px auto; padding: 0 16px; }
+        .section-title { margin: 24px 0; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group textarea { min-height: 120px; }
+        .complaints-list { display: grid; gap: 16px; }
+        .complaint-card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; }
+        .complaint-header { display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+        .status-badge { padding: 4px 10px; border-radius: 999px; font-size: 12px; text-transform: uppercase; letter-spacing: .4px; }
+        .status-pending { background: #fff4e5; color: #a15c00; }
+        .status-resolved { background: #e6ffed; color: #036a27; }
+        .status-rejected { background: #ffe6e6; color: #a10000; }
+        .complaint-meta { color: #666; font-size: 13px; margin-top: 6px; }
+        .complaint-actions { display: flex; gap: 8px; margin-top: 12px; }
+        .btn-danger { background: #b00020; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+        .btn-outline { background: transparent; border: 1px solid #b89a7e; color: #b89a7e; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Hotel el Rincón del Carmen<br><span class="santorini"></span></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Hogar</a></li>
+                <li class="nav-item"><a href="suites.html" class="nav-link">Suites</a></li>
+                <li class="nav-item dropdown">
+                    <a href="../index.html#experience" class="nav-link">Experiencia</a>
+                    <div class="dropdown-menu">
+                        <a href="trinity-restaurant.html" class="dropdown-item">Trinity Restaurant</a>
+                        <a href="sky-bar.html" class="dropdown-item">Sky Bar</a>
+                        <a href="sacred-spa.html" class="dropdown-item">The Sacred Spa</a>
+                        <a href="saint-gym.html" class="dropdown-item">Saint Gym</a>
+                        <a href="saint-yachting.html" class="dropdown-item">Saint Yachting</a>
+                        <a href="vip-transfers.html" class="dropdown-item">VIP Transfers</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                <li class="nav-item"><a href="reservas.html" class="nav-link">Reservar ahora</a></li>
+                <li class="nav-item"><a href="quejas.html" class="nav-link active">Quejas y Reclamos</a></li>
+                <li class="nav-item" id="userGreeting" style="display: none;">
+                    <span class="nav-link user-greeting"><span id="userName"></span></span>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link" id="loginBtn">Iniciar Sesión</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" id="adminBtn" style="display: none;">Panel Admin</a></li>
+                <li class="nav-item" id="logoutBtnItem" style="display: none;"><a href="#" class="nav-link" id="logoutBtn">Cerrar Sesión</a></li>
+            </ul>
+            <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        </div>
+    </nav>
+
+    <section class="hero" style="min-height: 180px;">
+        <div class="hero-content">
+            <h1>Quejas y Reclamos</h1>
+        </div>
+    </section>
+
+    <div class="complaints-container">
+        <h2 class="section-title">Radicar nueva queja o reclamo</h2>
+        <form id="complaintForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="complaintReservation">Reserva</label>
+                    <select id="complaintReservation" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="complaintSubject">Asunto</label>
+                    <input type="text" id="complaintSubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="complaintType">Tipo</label>
+                    <select id="complaintType" required>
+                        <option value="Queja">Queja</option>
+                        <option value="Reclamo">Reclamo</option>
+                    </select>
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label for="complaintDescription">Descripción</label>
+                    <textarea id="complaintDescription" required placeholder="Cuéntanos qué sucedió..."></textarea>
+                </div>
+            </div>
+            <div class="form-buttons" style="margin-top: 8px;">
+                <button type="submit" class="btn-primary">Radicar</button>
+                <button type="reset" class="btn-outline">Limpiar</button>
+            </div>
+        </form>
+
+        <div class="section-spacing"></div>
+        <h2 class="section-title">Mis quejas y reclamos</h2>
+        <div class="complaints-list" id="complaintsList"></div>
+    </div>
+
+    <!-- Modales de auth reutilizados -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="loginPassword" required>
+                        <svg class="toggle-password" data-target="loginPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Iniciar Sesión</button>
+            </form>
+            <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Registro de Usuario</h2>
+            <form id="registerForm">
+                <div class="form-group"><label for="regId">Número de Identificación:</label><input type="text" id="regId" required></div>
+                <div class="form-group"><label for="regName">Nombre Completo:</label><input type="text" id="regName" required></div>
+                <div class="form-group"><label for="regNationality">Nacionalidad:</label><input type="text" id="regNationality" required></div>
+                <div class="form-group"><label for="regEmail">Email:</label><input type="email" id="regEmail" required></div>
+                <div class="form-group"><label for="regPhone">Teléfono:</label><input type="tel" id="regPhone" required></div>
+                <div class="form-group">
+                    <label for="regPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="regPassword" required>
+                        <svg class="toggle-password" data-target="regPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Registrarse</button>
+            </form>
+            <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hotel el Rincón del Carmen</h3>
+                    <p>Tu hogar lejos de casa</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="reservas.html">Reservas</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +57 3137713137</p>
+                    <p><i class="fas fa-envelope"></i> reservations@saintsuitesoia.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hotel el Rincón del Carmen. Todos los derechos reservados.</p>
+                <p>Desarrollado por <a href="https://github.com/valemancilla" target="_blank" style="color: #b89a7e; text-decoration: none;">Vale Mancilla</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Hotel el Rincón del Carmen</title>
+    
+    <!-- Scripts JavaScript necesarios para la funcionalidad de contacto -->
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/localStorage.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/contacto.js" defer></script>
+    
+    <!-- Hojas de estilo CSS para contacto -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/contacto.css">
+    
+    <!-- Fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación principal -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo del hotel -->
+            <div class="nav-logo">
+                <h2>Hotel el Rincón del Carmen<br><span class="santorini"></span></h2>
+            </div>
+            
+            <!-- Menú de navegación -->
+            <ul class="nav-menu">
+                <!-- Enlace a la página principal -->
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Hogar</a>
+                </li>
+                
+                <!-- Enlace a las suites -->
+                <li class="nav-item">
+                    <a href="suites.html" class="nav-link">Suites</a>
+                </li>
+                
+                <!-- Menú desplegable de experiencias -->
+                <li class="nav-item dropdown">
+                    <a href="../index.html#experience" class="nav-link">Experiencia</a>
+                    <div class="dropdown-menu">
+                        <a href="trinity-restaurant.html" class="dropdown-item">Trinity Restaurant</a>
+                        <a href="sky-bar.html" class="dropdown-item">Sky Bar</a>
+                        <a href="sacred-spa.html" class="dropdown-item">The Sacred Spa</a>
+                        <a href="saint-gym.html" class="dropdown-item">Saint Gym</a>
+                        <a href="saint-yachting.html" class="dropdown-item">Saint Yachting</a>
+                        <a href="vip-transfers.html" class="dropdown-item">VIP Transfers</a>
+                    </div>
+                </li>
+                
+                <!-- Enlace activo a contacto -->
+                <li class="nav-item">
+                    <a href="contacto.html" class="nav-link active">Contacto</a>
+                </li>
+                
+                <!-- Enlace a reservas -->
+                <li class="nav-item">
+                    <a href="reservas.html" class="nav-link">Reservar ahora</a>
+                </li>
+                
+                <!-- Saludo del usuario (se muestra solo cuando está logueado) -->
+                <li class="nav-item" id="userGreeting" style="display: none;">
+                    <span class="nav-link user-greeting"><span id="userName"></span></span>
+                </li>
+                
+                <!-- Botón de iniciar sesión (se muestra cuando no está logueado) -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="loginBtn">Iniciar Sesión</a>
+                </li>
+                
+                <!-- Botón de panel de administración (solo para administradores) -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="adminBtn" style="display: none;">Panel Admin</a>
+                </li>
+                
+                <!-- Botón de cerrar sesión (se muestra cuando está logueado) -->
+                <li class="nav-item" id="logoutBtnItem" style="display: none;">
+                    <a href="#" class="nav-link" id="logoutBtn">Cerrar Sesión</a>
+                </li>
+            </ul>
+            
+            <!-- Botón hamburguesa para menú móvil -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección principal de contacto -->
+    <section class="contact-main-section">
+        <div class="contact-container">
+            <!-- Lado izquierdo - Formulario de contacto -->
+            <div class="contact-form-side">
+                <!-- Encabezado del formulario -->
+                <div class="form-header">
+                    <h1>Conéctate con nosotros</h1>
+                    <p>Ubicados en Santorini, Grecia, Oia, nuestro servicio de conserjería está aquí para ayudarte con cualquier pregunta o solicitud que puedas tener.</p>
+                </div>
+                
+                <!-- Formulario de contacto -->
+                <form id="contactForm" class="contact-form" novalidate>
+                    <!-- Campo de nombre -->
+                    <div class="form-group">
+                        <label for="contactName">Nombre (requerido)</label>
+                        <input type="text" id="contactName" name="name" required>
+                    </div>
+                    
+                    <!-- Campo de email -->
+                    <div class="form-group">
+                        <label for="contactEmail">Email (requerido)</label>
+                        <input type="email" id="contactEmail" name="email" required>
+                    </div>
+                    
+                    <!-- Campo de asunto -->
+                    <div class="form-group">
+                        <label for="contactSubject">Asunto (requerido)</label>
+                        <input type="text" id="contactSubject" name="subject" required>
+                    </div>
+                    
+                    <!-- Campo de mensaje -->
+                    <div class="form-group">
+                        <label for="contactMessage">Tu Mensaje (opcional)</label>
+                        <textarea id="contactMessage" name="message" rows="6"></textarea>
+                    </div>
+                    
+                    <!-- Mensaje de error general -->
+                    <div class="error-message" id="generalError" style="display: none;">Este campo es requerido.</div>
+                    
+                    <!-- Botón para enviar el formulario -->
+                    <button type="submit" class="submit-btn">ENVIAR MENSAJE</button>
+                    
+                    <!-- Mensaje de éxito (se muestra después de enviar) -->
+                    <div id="successMessage" class="success-message" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>¡Mensaje enviado exitosamente! Te contactaremos pronto.</span>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Lado derecho - Mapa e información de contacto -->
+            <div class="contact-info-side">
+                <!-- Mapa de Google -->
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3178.123456789!2d25.3756!3d36.4619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1499cdce05e3b1e9%3A0x9f4e5b8c7d6a3f2e!2sOia%2C%20Santorini%2C%20Greece!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="300" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <!-- Información de contacto -->
+                <div class="contact-details">
+                    <!-- Dirección del hotel -->
+                    <div class="contact-detail-item">
+                        <span class="detail-label">Dirección:</span>
+                        <span class="detail-value">Oia, 84702</span>
+                    </div>
+                    
+                    <!-- Ciudad del hotel -->
+                    <div class="contact-detail-item">
+                        <span class="detail-label">Ciudad:</span>
+                        <span class="detail-value">Santorini</span>
+                    </div>
+                    
+                    <!-- Horario de check-in -->
+                    <div class="contact-detail-item">
+                        <span class="detail-label">Check-In:</span>
+                        <span class="detail-value">03:00 pm</span>
+                    </div>
+                    <!-- Horario de check-out -->
+                    <div class="contact-detail-item">
+                        <span class="detail-label">Check-Out:</span>
+                        <span class="detail-value">11:00 am</span>
+                    </div>
+                    
+                    <!-- Email de recepción -->
+                    <div class="contact-detail-item">
+                        <span class="detail-label">Recepción:</span>
+                        <span class="detail-value">info@saintsuitesoia.com</span>
+                    </div>
+                    
+                    <!-- Teléfono de recepción -->
+                    <div class="contact-detail-item">
+                        <span class="detail-label">Teléfono (Recepción):</span>
+                        <span class="detail-value">+57 3137713137</span>
+                    </div>
+                    
+                    <!-- Email de reservas -->
+                    <div class="contact-detail-item">
+                        <span class="detail-label">Reservas:</span>
+                        <span class="detail-value">reservations@saintsuitesoia.com</span>
+                    </div>
+                    
+                    <!-- Teléfono de reservas -->
+                    <div class="contact-detail-item">
+                        <span class="detail-label">Teléfono (Reservas):</span>
+                        <span class="detail-value">+57 3137713137</span>
+                    </div>
+                </div>
+                
+                <!-- Sección de contacto por WhatsApp -->
+                <div class="whatsapp-contact">
+                    <div class="whatsapp-availability">DISPONIBLE DE 8 AM A 2 AM </div>
+                    <div class="whatsapp-info">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>También puedes contactarnos por WhatsApp</span>
+                        <span class="whatsapp-number">+57 3137713137</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página del sitio web -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Sección 1: Información del hotel -->
+                <div class="footer-section">
+                    <h3>Hotel el Rincón del Carmen</h3>
+                    <p>Tu hogar lejos de casa</p>
+                </div>
+                
+                <!-- Sección 2: Enlaces de navegación rápida -->
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="reservas.html">Reservas</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Sección 3: Información de contacto -->
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +57 3137713137</p>
+                    <p><i class="fas fa-envelope"></i> reservations@saintsuitesoia.com</p>
+                </div>
+            </div>
+            
+            <!-- Sección inferior del footer con derechos de autor -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hotel el Rincón del Carmen. Todos los derechos reservados.</p>
+                <p>Desarrollado por <a href="https://github.com/valemancilla" target="_blank" style="color: #b89a7e; text-decoration: none;">Vale Mancilla</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Ventanas modales para autenticación -->
+    
+    <!-- Modal de inicio de sesión -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            
+            <!-- Formulario de login -->
+            <form id="loginForm">
+                <!-- Campo de email -->
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                
+                <!-- Campo de contraseña con botón para mostrar/ocultar -->
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="loginPassword" required>
+                        <!-- Icono para alternar visibilidad de la contraseña -->
+                        <svg class="toggle-password" data-target="loginPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn-primary">Iniciar Sesión</button>
+            </form>
+            
+            <!-- Enlaces de navegación -->
+            <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+            <p><a href="#" id="showChangePassword" style="color: #b89a7e; font-size: 14px;">¿Olvidaste tu contraseña?</a></p>
+        </div>
+    </div>
+
+    <!-- Modal de registro de nuevos usuarios -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Registro de Usuario</h2>
+            
+            <!-- Formulario de registro -->
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regId">Número de Identificación:</label>
+                    <input type="text" id="regId" required>
+                </div>
+                <div class="form-group">
+                    <label for="regName">Nombre Completo:</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form-group">
+                    <label for="regNationality">Nacionalidad:</label>
+                    <input type="text" id="regNationality" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">Teléfono:</label>
+                    <input type="tel" id="regPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="regPassword" required>
+                        <svg class="toggle-password" data-target="regPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Registrarse</button>
+            </form>
+            <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+
+    <!-- Modal de cambio de contraseña -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Cambiar Contraseña</h2>
+            
+            <!-- Formulario de cambio de contraseña -->
+            <form id="changePasswordForm">
+                <!-- Campo de email -->
+                <div class="form-group">
+                    <label for="changeEmail">Email:</label>
+                    <input type="email" id="changeEmail" required>
+                </div>
+                
+                <!-- Campo de contraseña actual -->
+                <div class="form-group">
+                    <label for="currentPassword">Contraseña Actual:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="currentPassword" required>
+                        <!-- Icono para alternar visibilidad de la contraseña -->
+                        <svg class="toggle-password" data-target="currentPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Campo de nueva contraseña -->
+                <div class="form-group">
+                    <label for="newPassword">Nueva Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="newPassword" required minlength="6">
+                        <!-- Icono para alternar visibilidad de la nueva contraseña -->
+                        <svg class="toggle-password" data-target="newPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Campo de confirmación de nueva contraseña -->
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Nueva Contraseña:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="confirmPassword" required minlength="6">
+                        <!-- Icono para alternar visibilidad de la confirmación de contraseña -->
+                        <svg class="toggle-password" data-target="confirmPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn-primary">Cambiar Contraseña</button>
+            </form>
+            
+            <!-- Enlace para volver al login -->
+            <p><a href="#" id="backToLogin" style="color: #b89a7e; font-size: 14px;">← Volver al inicio de sesión</a></p>
+        </div>
+    </div>
+</body>
+</html>

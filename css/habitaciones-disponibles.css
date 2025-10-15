@@ -1,0 +1,643 @@
+/**
+ * ESTILOS PARA HABITACIONES DISPONIBLES
+ * 
+ * Este archivo contiene los estilos para la visualización de habitaciones disponibles,
+ * incluyendo tarjetas de habitaciones, badges, información de precios y diseño responsive.
+ * Utiliza un diseño compacto y elegante para mostrar la información de manera clara.
+ */
+
+/* ==========================================
+   SECCIÓN DE RESULTADOS
+   ========================================== */
+
+/* Contenedor de la sección de resultados de habitaciones disponibles */
+.results-section {
+    background: #ffffff;
+    padding: 3rem 0 4rem;
+    min-height: 400px;
+}
+
+.results-section .container h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #1c1c1c;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.results-section .container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: #b89a7e;
+}
+
+/* Grid de habitaciones - 2 columnas bien anchas */
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    row-gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+/* Tarjeta de habitación - diseño balanceado */
+.room-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.room-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: #b89a7e;
+}
+
+/* Tarjetas premium con beneficios especiales */
+.room-card.premium-suite {
+    border: 2px solid #e8dcc8;
+    box-shadow: 0 4px 20px rgba(184, 154, 126, 0.15);
+}
+
+.room-card.premium-suite:hover {
+    box-shadow: 0 12px 35px rgba(184, 154, 126, 0.25);
+    border-color: #b89a7e;
+}
+
+/* Imagen de la habitación - tamaño balanceado */
+.room-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.room-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.room-card:hover .room-image img {
+    transform: scale(1.08);
+}
+
+/* Badge de tarifa flexible */
+.flexible-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #b89a7e;
+    color: white;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Información de la habitación */
+.room-info {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Badges de características premium */
+.room-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.room-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 3px;
+    background: #f8f6f3;
+    color: #b89a7e;
+    border: 1px solid #e8e3dc;
+}
+
+.room-badge i {
+    font-size: 0.75rem;
+}
+
+.room-badge.breakfast {
+    background: #fff8f0;
+    color: #d4a574;
+    border-color: #f0e0c8;
+}
+
+.room-badge.transfer {
+    background: #f0f8ff;
+    color: #7ca8c8;
+    border-color: #d0e4f0;
+}
+
+.room-badge.cancellation {
+    background: #f0fff0;
+    color: #6ba86b;
+    border-color: #d0e8d0;
+}
+
+.room-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #1c1c1c;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+/* Sección de precios destacada */
+.room-price-section {
+    margin-bottom: 1.2rem;
+    padding: 1.1rem;
+    background: linear-gradient(135deg, #fafaf8 0%, #f5f3f0 100%);
+    border-radius: 5px;
+    border-left: 3px solid #b89a7e;
+}
+
+.price-night {
+    display: block;
+    font-size: 1.2rem;
+    color: #b89a7e;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.price-total {
+    display: block;
+    font-size: 0.88rem;
+    color: #555;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.price-note {
+    display: block;
+    font-size: 0.7rem;
+    color: #999;
+    font-style: italic;
+    margin-top: 0.2rem;
+}
+
+/* Especificaciones balanceadas */
+.room-specs {
+    display: flex;
+    justify-content: space-around;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.spec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: #666;
+    flex: 1;
+    text-align: center;
+}
+
+.spec i {
+    color: #b89a7e;
+    font-size: 1.3rem;
+}
+
+.spec span {
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+/* Amenidades más espaciadas */
+.room-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+    justify-content: center;
+}
+
+.room-amenities i {
+    font-size: 1.1rem;
+    color: #b89a7e;
+    background: #f8f6f3;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.room-amenities i:hover {
+    background: #b89a7e;
+    color: white;
+    transform: scale(1.15);
+}
+
+/* Lista de beneficios premium */
+.room-benefits {
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+    background: #fafaf8;
+    border-radius: 5px;
+    border: 1px solid #f0ede8;
+}
+
+.room-benefits h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.85rem;
+    color: #2c3e50;
+    margin-bottom: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.room-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.room-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.room-benefits li:last-child {
+    margin-bottom: 0;
+}
+
+.room-benefits li i {
+    color: #27ae60;
+    font-size: 0.7rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+}
+
+/* Descripción optimizada */
+.room-desc {
+    font-size: 0.86rem;
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Botones balanceados */
+.room-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+    margin-top: auto;
+}
+
+.btn-details,
+.btn-reserve {
+    padding: 0.75rem 1.2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-details {
+    background: white;
+    border: 1.5px solid #b89a7e;
+    color: #b89a7e;
+}
+
+.btn-details:hover {
+    background: #b89a7e;
+    color: white;
+}
+
+.btn-reserve {
+    background: #b89a7e;
+    color: white;
+    border: 1.5px solid #b89a7e;
+    box-shadow: 0 2px 8px rgba(184, 154, 126, 0.2);
+}
+
+.btn-reserve:hover {
+    background: #a08568;
+    border-color: #a08568;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(184, 154, 126, 0.35);
+}
+
+/* Estado vacío */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1px dashed #d0d0d0;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: #b89a7e;
+    margin-bottom: 1.5rem;
+    opacity: 0.4;
+}
+
+.empty-state h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+}
+
+.empty-state p {
+    color: #777;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .rooms-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .rooms-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .results-section {
+        padding: 2rem 0;
+    }
+    
+    .results-section .container h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    
+    .rooms-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .room-card {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        background: white;
+        border: 1px solid rgba(184, 154, 126, 0.1);
+    }
+    
+    .room-card:hover,
+    .room-card:active {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .room-image {
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .room-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .room-card:hover .room-image img {
+        transform: scale(1.05);
+    }
+    
+    .room-info {
+        padding: 1.5rem;
+    }
+    
+    .room-name {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        color: #2c3e50;
+        font-weight: 600;
+    }
+    
+    .room-badges {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .room-badge {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 15px;
+        font-weight: 500;
+    }
+    
+    .room-specs {
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .spec {
+        flex-direction: row;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .spec i {
+        font-size: 1.1rem;
+    }
+    
+    .room-benefits {
+        padding: 1rem;
+        background: rgba(184, 154, 126, 0.05);
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+    
+    .room-benefits h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+        font-weight: 600;
+    }
+    
+    .room-benefits li {
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+        color: #666;
+    }
+    
+    .room-amenities {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .room-amenities i {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+        background: linear-gradient(135deg, #b89a7e, #a08568);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+    
+    .room-amenities i:hover {
+        transform: scale(1.1);
+    }
+    
+    .room-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .btn-primary,
+    .btn-outline {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 25px;
+        min-height: 48px;
+        transition: all 0.3s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .btn-primary:active,
+    .btn-outline:active {
+        transform: scale(0.98);
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, #b89a7e, #a08568);
+        color: white;
+        border: none;
+    }
+    
+    .btn-outline {
+        background: transparent;
+        color: #b89a7e;
+        border: 2px solid #b89a7e;
+    }
+    
+    .btn-outline:hover,
+    .btn-outline:active {
+        background: #b89a7e;
+        color: white;
+    }
+    
+    .room-buttons {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .room-image {
+        height: 180px;
+    }
+    
+    .room-info {
+        padding: 1.2rem;
+    }
+    
+    .flexible-badge {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.7rem;
+    }
+    
+    .price-night {
+        font-size: 1.1rem;
+    }
+    
+    .price-total {
+        font-size: 0.82rem;
+    }
+    
+    .price-note {
+        font-size: 0.65rem;
+    }
+    
+    .room-benefits {
+        padding: 0.7rem;
+    }
+    
+    .room-benefits h4 {
+        font-size: 0.75rem;
+    }
+    
+    .room-benefits li {
+        font-size: 0.72rem;
+    }
+}

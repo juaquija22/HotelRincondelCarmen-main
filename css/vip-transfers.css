@@ -1,0 +1,363 @@
+/**
+ * ESTILOS DE VIP TRANSFERS
+ * 
+ * Este archivo contiene todos los estilos específicos para la página de traslados VIP,
+ * incluyendo secciones de título, flota de vehículos, servicios de transporte y diseño general.
+ * Usa un diseño premium y exclusivo acorde con el servicio de transporte de lujo.
+ */
+
+/* ==========================================
+   VIP TRANSFERS - ESTILOS INDEPENDIENTES
+   ========================================== */
+
+/* Estilos base de la página de traslados VIP */
+.vip-transfers-page {
+    background-color: #ffffff;
+    color: #2c2c2c;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navegación usa estilos de main.css */
+
+/* VIP Transfers Title Section */
+.vip-transfers-title-section {
+    background: #f5f5f5;
+    padding: 4rem 0 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 80px;
+}
+
+.vip-transfers-title-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="vip-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23d4af37" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23vip-pattern)"/></svg>');
+    opacity: 0.3;
+}
+
+.vip-transfers-title-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.vip-transfers-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.02em;
+}
+
+/* VIP Transfers Main Content - Same as Sky Bar */
+.vip-transfers-main-content {
+    padding: 6rem 0;
+    background: #ffffff;
+    min-height: 70vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.vip-transfers-left {
+    flex: 1;
+    max-width: 600px;
+    padding-right: 4rem;
+    margin-right: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vip-transfers-headline {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.vip-transfers-right {
+    flex: 1;
+    max-width: 600px;
+    padding-left: 2rem;
+}
+
+.vip-transfers-description {
+    max-width: 100%;
+}
+
+.description-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.description-left,
+.description-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.description-left p,
+.description-right p {
+    font-size: 1.1rem;
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin: 0;
+    font-weight: 400;
+    text-align: left;
+}
+
+/* ========================================
+   VIP TRANSFERS IMAGES - LUXURY FLEET GALLERY
+   ======================================== */
+
+/* VIP Transfers Images Container */
+.vip-transfers-images-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    margin: -12rem 0 4rem 0;
+    padding: 0 2rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    background: transparent;
+    align-items: center;
+}
+
+.vip-transfers-image-item {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.vip-transfers-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Center image specific styling - smaller size but aligned */
+.vip-transfers-image-item:nth-child(2) {
+    justify-self: center;
+    max-width: 420px;
+}
+
+.vip-transfers-image-item:nth-child(2) .vip-transfers-image {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Responsive Design for VIP Transfers - Same as Sky Bar */
+@media (max-width: 1200px) {
+    .vip-transfers-main-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 3rem;
+        padding: 4rem 2rem;
+    }
+    
+    .vip-transfers-left,
+    .vip-transfers-right {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .vip-transfers-headline {
+        font-size: 2.2rem;
+    }
+    
+    .vip-transfers-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 968px) {
+    .description-columns {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .vip-transfers-headline {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .description-left p,
+    .description-right p {
+        text-align: center;
+        font-size: 1rem;
+    }
+    
+    ./* vip-transfers-nav */ .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: #b89a7e;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+        padding: 2rem 0;
+    }
+    
+    ./* vip-transfers-nav */ .nav-menu.active {
+        left: 0;
+    }
+    
+    ./* vip-transfers-nav */ .nav-menu li {
+        margin: 1rem 0;
+    }
+    
+    ./* vip-transfers-nav */ .hamburger {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .vip-transfers-title-section {
+        padding: 3rem 0 2rem;
+    }
+    
+    .vip-transfers-main-content {
+        padding: 3rem 1rem;
+        gap: 2.5rem;
+    }
+    
+    .vip-transfers-headline {
+        font-size: 1.8rem;
+    }
+    
+    .vip-transfers-title {
+        font-size: 2.5rem;
+    }
+    
+    .description-left p,
+    .description-right p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    ./* vip-transfers-nav */ .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .vip-transfers-title-section .container {
+        padding: 0 1rem;
+    }
+    
+    .vip-transfers-main-content {
+        padding: 2rem 1rem;
+        gap: 2rem;
+    }
+    
+    .vip-transfers-headline {
+        font-size: 1.5rem;
+    }
+    
+    .vip-transfers-title {
+        font-size: 2rem;
+    }
+    
+    .description-left p,
+    .description-right p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+}
+
+/* Responsive Design for VIP Transfers Images */
+@media (max-width: 1200px) {
+    .vip-transfers-images-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: -10rem 0 3rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .vip-transfers-images-container {
+        padding: 0 1rem;
+        gap: 1.5rem;
+    }
+}
+
+/* Animation and Transitions */
+.vip-transfers-page * {
+    transition: all 0.3s ease;
+}
+
+.vip-transfers-title-section {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.vip-transfers-left,
+.vip-transfers-right {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.vip-transfers-right {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Focus States for Accessibility */
+./* vip-transfers-nav */ .nav-link:focus,
+./* vip-transfers-nav */ .dropdown-item:focus,
+./* vip-transfers-nav */ .search-icon:focus {
+    outline: 2px solid #f4e4c1;
+    outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+    ./* vip-transfers-nav */,
+    .vip-transfers-title-section::before {
+        display: none;
+    }
+    
+    .vip-transfers-page {
+        background: white;
+        color: black;
+    }
+    
+    .vip-transfers-main-title,
+    .vip-transfers-title {
+        color: black;
+    }
+    
+    .vip-transfers-images-container {
+        display: none;
+    }
+}
