@@ -11,26 +11,10 @@
     <script src="../js/complaints.js" defer></script>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/quejas.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .complaints-container { max-width: 1100px; margin: 40px auto; padding: 0 16px; }
-        .section-title { margin: 24px 0; }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .form-group textarea { min-height: 120px; }
-        .complaints-list { display: grid; gap: 16px; }
-        .complaint-card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; }
-        .complaint-header { display: flex; gap: 12px; align-items: center; justify-content: space-between; }
-        .status-badge { padding: 4px 10px; border-radius: 999px; font-size: 12px; text-transform: uppercase; letter-spacing: .4px; }
-        .status-pending { background: #fff4e5; color: #a15c00; }
-        .status-resolved { background: #e6ffed; color: #036a27; }
-        .status-rejected { background: #ffe6e6; color: #a10000; }
-        .complaint-meta { color: #666; font-size: 13px; margin-top: 6px; }
-        .complaint-actions { display: flex; gap: 8px; margin-top: 12px; }
-        .btn-danger { background: #b00020; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
-        .btn-outline { background: transparent; border: 1px solid #b89a7e; color: #b89a7e; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
-        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
-    </style>
+    
 </head>
 <body>
     <nav class="navbar">
@@ -66,10 +50,8 @@
         </div>
     </nav>
 
-    <section class="hero" style="min-height: 180px;">
-        <div class="hero-content">
-            <h1>Quejas y Reclamos</h1>
-        </div>
+    <section class="suite-title-section">
+        <h1>Quejas y Reclamos</h1>
     </section>
 
     <div class="complaints-container">

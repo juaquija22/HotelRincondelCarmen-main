@@ -1,0 +1,48 @@
+/* Estilos dedicados para Quejas y Reclamos */
+
+.suite-title-section { margin-top: 110px; }
+
+.complaints-container { max-width: 1100px; margin: 40px auto; padding: 0 16px; }
+.section-title { margin: 24px 0; font-size: 26px; color: #1c1c1c; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group textarea { min-height: 140px; line-height: 1.5; }
+
+.form-group label { font-weight: 600; color: #1c1c1c; }
+.form-group input,
+.form-group select,
+.form-group textarea { border: 1px solid #ddd; border-radius: 8px; padding: 10px 12px; background: #fff; }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: none; border-color: #b89a7e; box-shadow: 0 0 0 3px rgba(184,154,126,0.15); }
+
+.complaints-list { display: grid; gap: 16px; }
+.complaint-card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 6px 16px rgba(0,0,0,0.08); position: relative; border: 1px solid #f0f0f0; }
+.complaint-header { display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+
+.status-badge { padding: 6px 12px; border-radius: 999px; font-size: 12px; text-transform: uppercase; letter-spacing: .4px; font-weight: 700; }
+.status-pending { background: #fff4e5; color: #a15c00; }
+.status-resolved { background: #e6ffed; color: #036a27; }
+.status-rejected { background: #ffe6e6; color: #a10000; }
+
+.complaint-meta { color: #666; font-size: 13px; margin-top: 6px; display: flex; gap: 8px; align-items: center; }
+.complaint-meta i { color: #b89a7e; }
+
+.complaint-card p { color: #2b2b2b; margin: 8px 0 0 0; }
+.complaint-actions { display: flex; gap: 8px; margin-top: 12px; }
+.btn-danger { background: #b00020; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+.btn-danger:hover { filter: brightness(0.95); }
+.btn-outline { background: transparent; border: 1px solid #b89a7e; color: #b89a7e; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+.btn-outline:hover { background: rgba(184,154,126,0.08); }
+
+/* Botón Radicar (más visible en esta página) */
+.complaints-container .form-buttons .btn-primary { background: #b89a7e; color: #fff; border: 1px solid #b89a7e; padding: 10px 16px; border-radius: 6px; }
+.complaints-container .form-buttons .btn-primary:hover { filter: brightness(0.95); }
+.complaints-container .form-buttons .btn-primary:focus { outline: none; box-shadow: 0 0 0 3px rgba(184,154,126,0.25); }
+
+@media (max-width: 768px) {
+    .suite-title-section { margin-top: 90px; }
+    .form-grid { grid-template-columns: 1fr; }
+}
+
+
